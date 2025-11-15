@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar médico{% endblock %}
+{% block extra_head %}
+  <style>
+    .btn-medico { background: linear-gradient(90deg, #0f766e 60%, #22d3ee 100%); color: #fff; border: none; }
+    .btn-outline-info { border-color: #22d3ee; color: #22d3ee; }
+    .btn-outline-info:hover { background: #22d3ee; color: #fff; }
+  </style>
+{% endblock %}
+{% block content %}
+  <div class="card card-base p-3">
+    <h2>¿Eliminar médico?</h2>
+    <p>¿Estás seguro que deseas eliminar al Dr. {{ medico.nombre }} {{ medico.apellido }}?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn btn-danger">Eliminar</button>
+      <a class="btn btn-outline-info" href="{% url 'app_medico:listar_medicos' %}">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}

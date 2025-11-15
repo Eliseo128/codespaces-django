@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Pacientes{% endblock %}
+{% block content %}
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<h2>Pacientes</h2>
+		<a class="btn btn-accent" href="{% url 'app_paciente:crear_paciente' %}">Nuevo paciente</a>
+	</div>
+	<div class="card card-base p-3">
+		<div class="table-responsive">
+			<table class="table table-dark table-striped align-middle">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Género</th>
+						<th>Teléfono</th>
+						<th>Email</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for p in pacientes %}
+					<tr>
+						<td>{{ p.nombre }}</td>
+						<td>{{ p.apellido }}</td>
+						<td>{{ p.get_genero_display }}</td>
+						<td>{{ p.telefono }}</td>
+						<td>{{ p.email }}</td>
+						<td>
+							<a class="btn btn-sm btn-outline-light" href="{% url 'app_paciente:editar_paciente' p.id_paciente %}">Editar</a>
+							<a class="btn btn-sm btn-danger" href="{% url 'app_paciente:eliminar_paciente' p.id_paciente %}">Eliminar</a>
+						</td>
+					</tr>
+					{% empty %}
+					<tr><td colspan="6" class="text-center">No hay pacientes.</td></tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+ 
+

@@ -25,6 +25,9 @@ from backend_oxxo.core import views as core_views
 urlpatterns = [
     path("", core_views.index),
     path("admin/", admin.site.urls),
+    path("pacientes/", include("app_paciente.urls")),
+    path("medicos/", include("app_medico.urls")),
+    path("habitaciones/", include("app_habitacion.urls")),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 if settings.DEBUG:

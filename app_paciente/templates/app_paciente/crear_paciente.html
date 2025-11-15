@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Crear paciente{% endblock %}
+{% block extra_head %}
+	<style>
+		.crear-paciente-form label { color: #ffffff !important; font-weight: 600; }
+		.crear-paciente-form .form-control { background: rgba(255,255,255,0.02); color: #ffffff; border: 1px solid rgba(255,255,255,0.08); }
+		.crear-paciente-form .form-select { background: rgba(255,255,255,0.02); color: #ffffff; border: 1px solid rgba(255,255,255,0.08); }
+		.crear-paciente-form .form-control::placeholder { color: rgba(255,255,255,0.6); }
+		/* Mostrar las opciones de género con texto negro */
+		/* El texto seleccionado en el select se muestra en blanco */
+		.crear-paciente-form select[name="genero"] {
+			color: #ffffff !important;
+			background: rgba(255,255,255,0.02);
+		}
+		/* Las opciones desplegables se muestran en negro */
+		.crear-paciente-form select[name="genero"] option {
+			color: #000000;
+			background: #ffffff;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	<h2>Crear paciente</h2>
+	<div class="card card-base p-3 crear-paciente-form">
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div class="mt-3">
+				<button class="btn btn-accent">Guardar</button>
+				<a class="btn btn-outline-light" href="{% url 'app_paciente:listar_pacientes' %}">Cancelar</a>
+			</div>
+		</form>
+	</div>
+{% endblock %}
+ 
+

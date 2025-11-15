@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Editar habitación{% endblock %}
+{% block extra_head %}
+  <style>
+    .crear-habitacion-form label { color: #f59e42 !important; font-weight: 600; }
+    .crear-habitacion-form .form-control { background: rgba(245,158,66,0.05); color: #fff; border: 1px solid #f59e42; }
+    .crear-habitacion-form .form-select { background: rgba(245,158,66,0.05); color: #fff; border: 1px solid #f59e42; }
+    .crear-habitacion-form .form-control::placeholder { color: #fbbf24; }
+    .crear-habitacion-form .form-control:focus { border-color: #fbbf24; box-shadow: 0 0 0 0.2rem #f59e4233; }
+    .crear-habitacion-form .form-select:focus { border-color: #fbbf24; box-shadow: 0 0 0 0.2rem #f59e4233; }
+    .btn-habitacion { background: linear-gradient(90deg, #f59e42 60%, #fbbf24 100%); color: #fff; border: none; }
+    /* Mostrar texto en blanco en todos los inputs */
+    .crear-habitacion-form input[name="numero_habitacion"],
+    .crear-habitacion-form input[name="costo_diario"],
+    .crear-habitacion-form input[name="capacidad"],
+    .crear-habitacion-form textarea { color: #fff !important; }
+    /* Mostrar opciones en negro para tipo_habitacion y estado_habitacion */
+    .crear-habitacion-form select[name="tipo_habitacion"],
+    .crear-habitacion-form select[name="estado_habitacion"] { color: #fff !important; }
+    .crear-habitacion-form select[name="tipo_habitacion"] option,
+    .crear-habitacion-form select[name="estado_habitacion"] option { color: #000; background: #fff; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h2>Editar habitación</h2>
+  <div class="card card-base p-3 crear-habitacion-form">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="mt-3">
+        <button class="btn btn-habitacion">Guardar cambios</button>
+        <a class="btn btn-outline-warning" href="{% url 'app_habitacion:listar_habitaciones' %}">Cancelar</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+

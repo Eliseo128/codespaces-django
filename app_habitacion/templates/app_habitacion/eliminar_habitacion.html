@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar habitación{% endblock %}
+{% block extra_head %}
+  <style>
+    .btn-habitacion { background: linear-gradient(90deg, #f59e42 60%, #fbbf24 100%); color: #fff; border: none; }
+    .btn-outline-warning { border-color: #f59e42; color: #f59e42; }
+    .btn-outline-warning:hover { background: #f59e42; color: #fff; }
+  </style>
+{% endblock %}
+{% block content %}
+  <div class="card card-base p-3">
+    <h2>¿Eliminar habitación?</h2>
+    <p>¿Estás seguro que deseas eliminar la habitación {{ habitacion.numero_habitacion }} ({{ habitacion.get_tipo_habitacion_display }})?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn btn-danger">Eliminar</button>
+      <a class="btn btn-outline-warning" href="{% url 'app_habitacion:listar_habitaciones' %}">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Editar médico{% endblock %}
+{% block extra_head %}
+  <style>
+    .crear-medico-form label { color: #22d3ee !important; font-weight: 600; }
+    .crear-medico-form .form-control { background: rgba(34,211,238,0.05); color: #0f1724; border: 1px solid #22d3ee; }
+    .crear-medico-form .form-control::placeholder { color: #38bdf8; }
+    .crear-medico-form .form-control:focus { border-color: #0ea5e9; box-shadow: 0 0 0 0.2rem #22d3ee33; }
+    .btn-medico { background: linear-gradient(90deg, #0f766e 60%, #22d3ee 100%); color: #fff; border: none; }
+    /* Mostrar texto en blanco en todos los campos solicitados */
+    .crear-medico-form input[name="nombre"],
+    .crear-medico-form input[name="apellido"],
+    .crear-medico-form input[name="especialidad"],
+    .crear-medico-form input[name="telefono"],
+    .crear-medico-form input[name="email"],
+    .crear-medico-form input[name="licencia_medica"],
+    .crear-medico-form input[name="salario"],
+    .crear-medico-form input[name="fecha_contratacion"] {
+      color: #fff !important;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <h2>Editar médico</h2>
+  <div class="card card-base p-3 crear-medico-form">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="mt-3">
+        <button class="btn btn-medico">Guardar cambios</button>
+        <a class="btn btn-outline-info" href="{% url 'app_medico:listar_medicos' %}">Cancelar</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

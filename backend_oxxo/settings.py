@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_browser_reload",
+    "app_paciente",
+    "app_medico",
+    "app_habitacion",
 ]
 
 MIDDLEWARE = [
@@ -64,7 +67,7 @@ ROOT_URLCONF = "backend_oxxo.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "backend_oxxo" / "templates"],
+        "DIRS": [BASE_DIR / "templates", BASE_DIR / "backend_oxxo" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

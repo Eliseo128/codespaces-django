@@ -11,8 +11,8 @@
   },
   "customizations": {
     "codespaces": {
-      "openFiles": [
-        "hello_world/templates/index.html"
+        "openFiles": [
+        "backend_oxxo/templates/index.html"
       ]
     },
     "vscode": {
